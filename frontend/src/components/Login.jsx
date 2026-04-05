@@ -38,61 +38,56 @@ function Login({ onLoginSuccess }) {
 
   return (
     <div
-      style={{
-        maxWidth: "350px",
-        margin: "100px auto",
-        padding: "20px",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        textAlign: "center",
-        fontFamily: "sans-serif",
-      }}
+      className="bg-transparent m-auto mt-10 w-full max-w-md p-10
+      text-center flex flex-col justify-center items-center border 
+      rounded border-slate-500"
     >
-      <h2>🔐 Masuk JobLoker</h2>
-
-      {/* Jika ada pesan error, tampilkan dengan warna merah */}
-      {errorPesan && (
-        <p style={{ color: "red", fontSize: "14px" }}>{errorPesan}</p>
-      )}
+      <h2 className="font-sans text-2xl font-bold">🔐 Masuk JobLoker</h2>
 
       <form
         onSubmit={handleLogin}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-          marginTop: "20px",
-        }}
+        className="flex flex-col items-center
+        gap-6 w-full mt-8"
       >
         <input
           type="text"
-          placeholder="Username (contoh: admin_hrd)"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{ padding: "10px" }}
+          className="p-2 w-100 border border-slate-300
+          shadow-sm rounded font-sans
+          focus:outline-none focus:border-green-400
+          placeholder:text-gray-400"
         />
         <input
           type="password"
-          placeholder="Password (contoh: rahasia123)"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{ padding: "10px" }}
+          className="p-2 w-100 border border-slate-300
+          shadow-sm rounded font-sans
+          focus:outline-none focus:border-green-400
+          placeholder:text-gray-400"
         />
+        {/* Jika ada pesan error, tampilkan dengan warna merah */}
+        {errorPesan && (
+          <p className="text-red-500 text-sm mt-2">{errorPesan}</p>
+        )}
+
         <button
           type="submit"
-          style={{
-            padding: "10px",
-            backgroundColor: "#2c3e50",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
-            borderRadius: "5px",
-          }}
+          className="px-8 py-2 bg-green-500
+          rounded border border-green-500 text-white
+          hover:text-green-500 hover:bg-transparent transition-all"
         >
           Login
         </button>
-        <p style={{ marginTop: "15px" }}>
-          Belum punya akun? <Link to="/register">Buat akun pelamar</Link>
+
+        <p>
+          Belum punya akun?{" "}
+          <Link to="/register" className="hover:underline">
+            Buat akun pelamar
+          </Link>
         </p>
       </form>
     </div>

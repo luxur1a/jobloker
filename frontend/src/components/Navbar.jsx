@@ -4,47 +4,45 @@ import { Link } from "react-router-dom";
 function Navbar({ role, onLogout }) {
   return (
     <nav
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        backgroundColor: "#2c3e50",
-        color: "white",
-        padding: "10px 20px",
-        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-      }}
+      className="bg-slate-800 text-white flex h-20 justify-between items-center px-4w-full
+    p-8"
     >
-      {/* 2. Jadikan Logo sebagai tombol kembali ke Beranda */}
-      <div style={{ fontSize: "20px", fontWeight: "bold" }}>
-        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+      {/* LOGO */}
+      <div className="text-2xl font-bold tracking-wide">
+        <Link
+          to="/"
+          className="text-white no-underline hover:text-blue-300 transition-colors"
+        >
           🏢 JobLoker
         </Link>
       </div>
 
-      <div style={{ display: "flex", gap: "15px", alignItems: "center" }}>
-        {/* 3. Gunakan <Link to="..."> sebagai pengganti <a href="..."> */}
-        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+      {/* Beranda */}
+      <div className="flex items-center gap-6 font-medium">
+        <Link
+          to="/"
+          className="text-slate-200 hover:text-blue-300 transition-color"
+        >
           Beranda
         </Link>
 
         {/* Tombol Login */}
         {!role && (
-          <Link to="/login" style={{ color: "white", textDecoration: "none" }}>
+          <Link
+            to="/login"
+            className="px-4 py-2 bg-green-500 rounded border border-green-500
+          hover:text-green-500 hover:bg-transparent transition-all"
+          >
             Login
           </Link>
         )}
 
+        {/* Tombol Logout */}
         {role && (
           <button
             onClick={onLogout}
-            style={{
-              backgroundColor: "#e74c3c",
-              color: "white",
-              border: "none",
-              padding: "5px 10px",
-              borderRadius: "3px",
-              cursor: "pointer",
-            }}
+            className="px-4 py-2 bg-red-500 rounded border border-red-500
+          hover:text-red-500 hover:bg-transparent transition-all"
           >
             Logout
           </button>

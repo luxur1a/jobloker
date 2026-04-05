@@ -69,30 +69,13 @@ function Home({ role }) {
       <h3>Daftar Posisi Terbuka:</h3>
       <ul>
         {lowongan.map((item) => (
-          <li
-            key={item.id}
-            style={{
-              marginBottom: "15px",
-              padding: "10px",
-              border: "1px solid #ddd",
-              borderRadius: "5px",
-            }}
-          >
+          <li className="mb-4 p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
             <strong>{item.judul}</strong> (Perusahaan: {item.nama_perusahaan})
             <br />
-            {/* Tampilkan tombol Lamar HANYA JIKA role === 'pelamar' */}
             {role === "pelamar" && (
               <button
+                className="mt-3 px-4 py-2 bg-green-500 text-white font-semibold rounded hover:bg-green-600 transition-colors"
                 onClick={() => handleLamar(item.id)}
-                style={{
-                  marginTop: "10px",
-                  padding: "5px 10px",
-                  backgroundColor: "#2ecc71",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "3px",
-                  cursor: "pointer",
-                }}
               >
                 Lamar Posisi Ini
               </button>
