@@ -5,7 +5,7 @@ function Navbar({ role, onLogout }) {
   return (
     <nav
       className="bg-slate-800 text-white flex h-20 justify-between items-center px-4w-full
-    p-8"
+    px-28 p-8 sticky top-0 z-50"
     >
       {/* LOGO */}
       <div className="text-2xl font-bold tracking-wide">
@@ -31,7 +31,7 @@ function Navbar({ role, onLogout }) {
           <Link
             to="/login"
             className="px-4 py-2 bg-green-500 rounded border border-green-500
-          hover:text-green-500 hover:bg-transparent transition-all"
+          hover:text-green-500 hover:bg-transparent transition-all duration-500"
           >
             Login
           </Link>
@@ -42,7 +42,7 @@ function Navbar({ role, onLogout }) {
           <button
             onClick={onLogout}
             className="px-4 py-2 bg-red-500 rounded border border-red-500
-          hover:text-red-500 hover:bg-transparent transition-all"
+          hover:text-red-500 hover:bg-transparent transition-all duration-500"
           >
             Logout
           </button>
