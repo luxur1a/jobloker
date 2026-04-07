@@ -19,6 +19,7 @@ const lamaranRoutes = require("./routes/lamaranRoutes");
 const loginRoutes = require("./routes/loginRoutes");
 const registerAdminRoutes = require("./routes/registerAdminRoutes");
 const registerPelamarRoutes = require("./routes/registerPelamarRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 // --- GUNAKAN ROUTES ---
 app.use("/api/lowongan", lowonganRoutes);
@@ -26,6 +27,7 @@ app.use("/api/lamaran", lamaranRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/register-pelamar", registerPelamarRoutes);
 app.use("/api/register-admin", registerAdminRoutes);
+app.use("/api/admin", adminRoutes);
 
 // === MENYALAKAN SERVER ===
 app.listen(port, () => {

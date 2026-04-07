@@ -1,16 +1,15 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import RegisterAdmin from "./components/RegisterAdmin";
+import DashboardHRD from "./components/DashboardHRD";
 import { useState } from "react";
 
 function App() {
   const navigate = useNavigate();
-
   const [role, setRole] = useState(localStorage.getItem("role"));
-
   const handleLoginSuccess = (userRole) => {
     setRole(userRole);
     navigate("/");
@@ -36,8 +35,14 @@ function App() {
         />
 
         <Route path="/register" element={<Register />} />
-
         <Route path="/register-admin" element={<RegisterAdmin />} />
+
+        <Route
+          path="/dashboard-hrd"
+          element={
+            role === "admin" ? <DashboardHRD /> : <Navigate to="/" replace />
+          }
+        />
       </Routes>
     </div>
   );
