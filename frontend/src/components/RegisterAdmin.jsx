@@ -6,7 +6,8 @@ function RegisterAdmin() {
     nama_perusahaan: "",
     username: "",
     password: "",
-    role: "admin", // Langsung "kunci" role-nya sebagai admin
+    role: "admin",
+    email: "", // Langsung "kunci" role-nya sebagai admin
   });
   const [pesan, setPesan] = useState("");
   const navigate = useNavigate();
@@ -41,30 +42,20 @@ function RegisterAdmin() {
 
   return (
     <div
-      style={{
-        maxWidth: "400px",
-        margin: "50px auto",
-        padding: "20px",
-        border: "1px solid #3498db",
-        borderRadius: "8px",
-        fontFamily: "sans-serif",
-        backgroundColor: "#f0f8ff",
-      }}
+      className="bg-white/85 m-auto mt-10 w-full max-w-md p-10
+      text-center flex flex-col justify-center items-center border 
+      rounded border-slate-500 backdrop-blur-xs"
     >
-      <h2 style={{ textAlign: "center", color: "#2c3e50" }}>
+      <div className="font-sans text-2xl font-bold">
         🏢 Buat Akun HRD / Perusahaan
-      </h2>
+      </div>
 
       {pesan && <p style={{ color: "red", textAlign: "center" }}>{pesan}</p>}
 
       <form
         onSubmit={handleRegister}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-          marginTop: "20px",
-        }}
+        className="flex flex-col items-center
+        gap-6 w-full mt-8"
       >
         <input
           type="nama_perusahaan"
@@ -72,7 +63,10 @@ function RegisterAdmin() {
           placeholder="Nama Perusahaan Anda"
           onChange={handleChange}
           required
-          style={{ padding: "10px" }}
+          className="p-2 w-100 border border-slate-300
+          shadow-sm rounded font-sans
+          focus:outline-none focus:border-green-400
+          placeholder:text-gray-400"
         />
 
         <input
@@ -81,7 +75,10 @@ function RegisterAdmin() {
           placeholder="Username Admin"
           onChange={handleChange}
           required
-          style={{ padding: "10px" }}
+          className="p-2 w-100 border border-slate-300
+          shadow-sm rounded font-sans
+          focus:outline-none focus:border-green-400
+          placeholder:text-gray-400"
         />
         <input
           type="password"
@@ -89,27 +86,38 @@ function RegisterAdmin() {
           placeholder="Password Kuat"
           onChange={handleChange}
           required
-          style={{ padding: "10px" }}
+          className="p-2 w-100 border border-slate-300
+          shadow-sm rounded font-sans
+          focus:outline-none focus:border-green-400
+          placeholder:text-gray-400"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="example@email.com"
+          onChange={handleChange}
+          required
+          className="p-2 w-100 border border-slate-300
+          shadow-sm rounded font-sans
+          focus:outline-none focus:border-green-400
+          placeholder:text-gray-400"
         />
 
         <button
           type="submit"
-          style={{
-            padding: "10px",
-            backgroundColor: "#3498db",
-            color: "white",
-            border: "none",
-            cursor: "pointer",
-            borderRadius: "5px",
-            fontWeight: "bold",
-          }}
+          className="px-8 py-2 bg-indigo-500
+          rounded border border-indigo-500 text-white
+          hover:text-indigo-500 hover:bg-transparent transition-all"
         >
           Daftarkan Perusahaan
         </button>
       </form>
 
       <p style={{ textAlign: "center", marginTop: "15px", fontSize: "14px" }}>
-        <Link to="/login">Kembali ke halaman Login</Link>
+        <Link to="/login" className="hover:underline">
+          Kembali ke halaman Login
+        </Link>
       </p>
     </div>
   );

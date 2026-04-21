@@ -3,10 +3,10 @@ const db = require("../db");
 
 const registerAdmin = async (req, res) => {
   try {
-    const { nama_perusahaan, username, password } = req.body;
+    const { nama_perusahaan, username, password, email } = req.body;
 
     // 1. Validasi Input (Admin hanya butuh username & password)
-    if (!nama_perusahaan || !username || !password) {
+    if (!nama_perusahaan || !username || !password || !email) {
       return res.status(400).json({ pesan: "Form wajib diisi!" });
     }
 
@@ -26,8 +26,8 @@ const registerAdmin = async (req, res) => {
 
     // 4. Simpan ke database Admin
     await db.query(
-      "INSERT INTO Admin (nama_perusahaan, username, password) VALUES (?, ?, ?)",
-      [nama_perusahaan, username, hashedPassword],
+      "INSERT INTO Admin (nama_perusahaan, username, password, email) VALUES (?, ?, ?, ?)",
+      [nama_perusahaan, username, hashedPassword, email],
     );
 
     res.status(201).json({ pesan: "Akun HRD berhasil didaftarkan!" });

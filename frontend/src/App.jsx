@@ -7,6 +7,7 @@ import RegisterAdmin from "./components/RegisterAdmin";
 import HRD_Dashboard from "./components/HRD_Dashboard";
 import { useState } from "react";
 import FormTambahLowongan from "./components/HRD_TambahLowongan";
+import BackgroundImage from "./assets/rocket.png";
 
 function App() {
   const navigate = useNavigate();
@@ -24,7 +25,12 @@ function App() {
   };
 
   return (
-    <div style={{ fontFamily: "sans-serif", margin: 0, padding: 0 }}>
+    <div
+      className="bg-cover min-h-screen bg-size-[auto_768px] bg-top-right bg-no-repeat bg-origin-content bg-fixed pt-22
+      h-full"
+      // Gunakan inline-style React untuk memanggil variabel gambar
+      style={{ backgroundImage: `url(${BackgroundImage})` }}
+    >
       <Navbar role={role} onLogout={handleLogout} />
 
       <Routes>

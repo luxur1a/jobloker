@@ -7,7 +7,7 @@ function Navbar({ role, onLogout }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800 relative z-50">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-slate-900/90 backdrop-blur-xs border-b border-white/10">
       <div className="maax-w-full px-2 sm:px-18 lg:px-28">
         <div className="relative flex h-16 items-center justify-between">
           {/* Hamburger Menu */}

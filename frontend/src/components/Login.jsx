@@ -38,9 +38,9 @@ function Login({ onLoginSuccess }) {
 
   return (
     <div
-      className="bg-transparent m-auto mt-10 w-full max-w-md p-10
+      className="bg-white/85 m-auto mt-10 w-full max-w-md p-10
       text-center flex flex-col justify-center items-center border 
-      rounded border-slate-500"
+      rounded border-slate-500 backdrop-blur-xs"
     >
       <h2 className="font-sans text-2xl font-bold">🔐 Masuk JobLoker</h2>
 

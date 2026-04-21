@@ -77,6 +77,36 @@ const login = async (req, res) => {
   }
 };
 
+const getProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const role = req.user.role;
+
+    let query = "";
+    let values = [];
+
+    if (role === "admin") {
+      query =
+        "SELECT nama_perusahaan as nama_lengkap, email FROM Admin WHERE id = ?";
+      values = [userId];
+    } else if (role === "pelamar") {
+      query = "SELECT nama_lengkap, email FROM Pelamar WHERE id = ?";
+      values = [userId];
+    }
+
+    const [user] = await db.query(query, values);
+
+    if (user.length === 0) {
+      return res.status(404).json({ pesan: "User tidak ditemukan!" });
+    }
+
+    res.json(user[0]);
+  } catch (error) {
+    console.error("Gagal mengambil profil");
+  }
+};
+
 module.exports = {
   login,
+  getProfile,
 };
