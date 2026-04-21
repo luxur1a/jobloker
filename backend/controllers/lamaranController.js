@@ -50,8 +50,8 @@ const tambahLamaran = async (req, res) => {
 
     // Kirim ke db
     const [result] = await db.query(
-      "INSERT INTO Lamaran (lowongan_id, pelamar_id, status) VALUES (?, ?, ?)",
-      [lowongan_id, pelamar_id, "Menunggu"],
+      "INSERT INTO Lamaran (lowongan_id, pelamar_id, status, tanggal_melamar) VALUES (?, ?, ?, NOW())",
+      [lowongan_id, pelamar_id, "Terkirim"],
     );
 
     res.status(201).json({
@@ -89,18 +89,18 @@ const getSemuaLamaran = async (req, res) => {
 const updateStatusLamaran = async (req, res) => {
   try {
     const { id_lamaran } = req.params;
-    const { status_baru } = req.body;
+    const { status } = req.body;
     const adminId = req.user.id;
 
     // Validasi
     const validStatus = [
-      "Terikirim",
+      "Terkirim",
       "Diproses",
       "Wawancara",
       "Diterima",
       "Ditolak",
     ];
-    if (!validStatus.includes(status_baru)) {
+    if (!validStatus.includes(status)) {
       return res.status(400).json({ pesan: "Status tidak valid!" });
     }
 
@@ -118,7 +118,7 @@ const updateStatusLamaran = async (req, res) => {
 
     // Update di database
     await db.query("UPDATE Lamaran SET status = ? WHERE id = ?", [
-      status_baru,
+      status,
       id_lamaran,
     ]);
 

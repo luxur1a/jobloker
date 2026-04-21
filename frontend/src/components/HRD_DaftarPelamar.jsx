@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function DashboardHRD() {
+function HRD_DaftarPelamar() {
   const [daftarLamaran, setDaftarLamaran] = useState([]);
 
   const [pesan, setPesan] = useState("");
@@ -27,7 +27,7 @@ function DashboardHRD() {
     fetchLamaran();
   }, []);
 
-  const handleUbahStatus = async (lamaran_id, statusBaru) => {
+  const handleUbahStatus = async (id_lamaran, status_baru) => {
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(
@@ -38,7 +38,7 @@ function DashboardHRD() {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ status: statusBaru }),
+          body: JSON.stringify({ status: status_baru }),
         },
       );
 
@@ -48,7 +48,7 @@ function DashboardHRD() {
         setDaftarLamaran((prevLamaran) =>
           prevLamaran.map((lamaran) =>
             lamaran.id_lamaran === id_lamaran
-              ? { ...lamaran, status: statusBaru }
+              ? { ...lamaran, status: status_baru }
               : lamaran,
           ),
         );
@@ -152,4 +152,4 @@ function DashboardHRD() {
   );
 }
 
-export default DashboardHRD;
+export default HRD_DaftarPelamar;

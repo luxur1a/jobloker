@@ -20,11 +20,11 @@ function Login({ onLoginSuccess }) {
       const data = await response.json();
 
       if (response.ok) {
-        // 1. Simpan tiket (token) di brankas browser (localStorage)
+        // 1. Simpan token di localStorage
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);
 
-        // 2. Beri tahu manajer (App.jsx) bahwa login berhasil!
+        // 2. Login berhasil
         onLoginSuccess(data.role);
       } else {
         // Jika password salah atau user tidak ada

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Logo from "../assets/hero.png";
-import FormTambahLowongan from "./FormTambahLowongan";
+import FormTambahLowongan from "./HRD_TambahLowongan";
 
 function Home({ role }) {
   const [lowongan, setLowongan] = useState([]);
@@ -53,7 +53,7 @@ function Home({ role }) {
 
   return (
     <div
-      className="flex flex-col lg:px-28 md:px-18 sm:px-10
+      className="flex flex-col lg:px-28 md:px-18 sm:px-10 px-4
     "
     >
       {/* BARIS 1 */}
@@ -61,20 +61,22 @@ function Home({ role }) {
         <h1 className="text-3xl font-sans font-bold mb-2">
           Selamat Datang di JobLoker!
         </h1>
-        <p className="text-2xl">Temukan pekerjaan impian Anda di sini.</p>
+        <p className="text-2xl mb-6">Temukan pekerjaan impian Anda di sini.</p>
+      </div>
+      <div>
+        <h3>Daftar Posisi Terbuka:</h3>
       </div>
 
       {/* BARIS 2 */}
       <div
-        className="w-full pt-10 mb-4
+        className="w-full pt-2 mb-4
     flex flex-col items-center lg:items-start lg:flex-row lg:justify-between"
       >
         {/* // KOLOM 1 */}
         <div className="flex flex-col w-full lg:w-3/4 bg-white-500">
-          <h3>Daftar Posisi Terbuka:</h3>
           <div
             className="grid grid-cols-1
-       gap-6 mt-4"
+       gap-6"
           >
             {lowongan.map((item) => (
               <div

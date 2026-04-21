@@ -4,8 +4,9 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import RegisterAdmin from "./components/RegisterAdmin";
-import DashboardHRD from "./components/DashboardHRD";
+import HRD_Dashboard from "./components/HRD_Dashboard";
 import { useState } from "react";
+import FormTambahLowongan from "./components/HRD_TambahLowongan";
 
 function App() {
   const navigate = useNavigate();
@@ -40,7 +41,18 @@ function App() {
         <Route
           path="/dashboard-hrd"
           element={
-            role === "admin" ? <DashboardHRD /> : <Navigate to="/" replace />
+            role === "admin" ? <HRD_Dashboard /> : <Navigate to="/" replace />
+          }
+        />
+
+        <Route
+          path="/job-posting"
+          element={
+            role === "admin" ? (
+              <FormTambahLowongan />
+            ) : (
+              <Navigate to="/" replace />
+            )
           }
         />
       </Routes>

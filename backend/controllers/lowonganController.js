@@ -21,13 +21,16 @@ const getSemuaLowongan = async (req, res) => {
 // Fungsi untuk POST lowongan baru
 const tambahLowongan = async (req, res) => {
   try {
-    const { judul, created_by } = req.body;
-    if (!judul || !created_by) {
+    const { judul } = req.body;
+
+    const admin_id = req.user.id;
+
+    if (!judul) {
       return res.status(400).json({ pesan: "Judul dan pembuat wajib diisi!" });
     }
     const [result] = await db.query(
       "INSERT INTO Lowongan (judul, created_by) VALUES (?, ?)",
-      [judul, created_by],
+      [judul, admin_id],
     );
     res
       .status(201)
